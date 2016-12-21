@@ -8,31 +8,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <style>
+
+      h1 { color: lightgrey; font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 30px; margin: 0 0 58px; }
+
+
       .box {
-        margin: 0 auto;
+        /*margin: 0 auto;*/
+        /*position: relative;*/
+        /*right: 300px;*/
         width: 500px;
+      }
+
+      .container {
+        border-style: solid;
+        padding: 5px;
         background-color: lightgrey;
+      }
+
+      .dream{
+        width: 500px;
+        height: 150px;
+        background-image: url('http://www.artsfon.com/pic/201506/1920x1080/artsfon.com-70067.jpg');
+      }
+
+      .smallBox {
+        background-image: url('http://www.artsfon.com/pic/201506/1920x1080/artsfon.com-70067.jpg');
       }
     </style>
 
   </head>
-  <body>
+  <body style="background-image: url('http://www.artsfon.com/pic/201506/1920x1080/artsfon.com-70067.jpg');">
   <!-- Dreams View -->
     <h1>Dream Cacher</h1>
 
     <div class ="box" ng-controller="dreamsController">
 
       <form ng-submit="createDream()">
-        <div><input type="text" placeholder="Author" ng-model="author"></input></div>
-          <div><input type="text" placeholder="Dream title" ng-model="dreamTitle"></input></div>
-          <div><textarea type="text" placeholder="Dream body" ng-model="dreamBody"></textarea></div>
-          <div><input type="text" placeholder="Tags" ng-model="tags"></input></div>
+        <div><input class="smallBox" type="text" placeholder="Author" ng-model="author"></input></div>
+          <div><input class="smallBox" type="text" placeholder="Dream title" ng-model="dreamTitle"></input></div>
+          <div><textarea type="text" class="dream" placeholder="Dream body" ng-model="dreamBody"></textarea></div>
+          <div><input class="smallBox" type="text" placeholder="Tags" ng-model="tags"></input></div>
           <button type="submit">Add</button>
       </form>
 
       <h3>There are {{dreams.length}} dreams</h3>
-        <input ng-model='search' placeholder='Search dreams'/>
-        <div class="box" ng-repeat="dream in dreams | orderBy:'':true | filter:search">
+        <input class="smallBox" ng-model='search' placeholder='Search dreams'/>
+        <div class="container" ng-repeat="dream in dreams | orderBy:'':true | filter:search">
           <div class="box">Author: {{dream.author || 'Anonymous'}}</div>
           <div class="box">{{"Title: " + dream.title}}</div>
           <div class="box">{{dream.body}}</div>
