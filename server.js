@@ -5,7 +5,7 @@ var express = require('express'),
     dreamsController = require('./server/controllers/dreams-controller');
     port = process.env.PORT || 8080;
 
-mongoose.connect('process.env.MONGOLAB_URI || mongodb://localhost:27017/mvp2');
+mongoose.connect('process.env.MONGOLAB_URI' || 'mongodb://localhost:27017/mvp2');
 
 app.use(bodyParser());
 
