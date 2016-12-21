@@ -27,8 +27,8 @@ app.get('/', function(req, res) {
 
 app.use('/js', express.static(__dirname + '/client/js'))
 
-app.get('/api/dreams', dreamsController.list);
-app.post('/api/dreams', dreamsController.create);
+app.get('/', dreamsController.list);
+app.post('/', dreamsController.create);
 
 app.listen(port, function() {
   console.log('I\'m listening')
