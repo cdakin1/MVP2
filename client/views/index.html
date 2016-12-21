@@ -3,15 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>Dream-Cacher</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      .box {
+        margin: 0 auto;
+        width: 500px;
+        background-color: lightgrey;
+      }
+    </style>
+
   </head>
   <body>
   <!-- Dreams View -->
+    <h1>Dream Cacher</h1>
 
-
-    <div ng-controller="dreamsController">
+    <div class ="box" ng-controller="dreamsController">
 
       <form ng-submit="createDream()">
         <div><input type="text" placeholder="Author" ng-model="author"></input></div>
@@ -21,12 +30,13 @@
           <button type="submit">Add</button>
       </form>
 
-      <h1>There are {{dreams.length}} dreams</h1>
-        <div ng-repeat="dream in dreams | orderBy:'':true">
-          <div>{{"Author: " + dream.author}}</div>
-          <div>{{"Title: " + dream.title}}</div>
-          <div>{{dream.body}}</div>
-          <div>Tags[{{dream.tags}}]</div>
+      <h3>There are {{dreams.length}} dreams</h3>
+        <input ng-model='search' placeholder='Search dreams'/>
+        <div class="box" ng-repeat="dream in dreams | orderBy:'':true | filter:search">
+          <div class="box">Author: {{dream.author || 'Anonymous'}}</div>
+          <div class="box">{{"Title: " + dream.title}}</div>
+          <div class="box">{{dream.body}}</div>
+          <div class="box">Tags: [{{dream.tags}}]</div>
           <br>
         </div>
     </div>
