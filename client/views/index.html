@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="dreamApp">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+  <!-- Dreams View -->
+
+
+    <div ng-controller="dreamsController">
+
+      <form ng-submit="createDream()">
+        <div><input type="text" placeholder="Author" ng-model="author"></input></div>
+          <div><input type="text" placeholder="Dream title" ng-model="dreamTitle"></input></div>
+          <div><textarea type="text" placeholder="Dream body" ng-model="dreamBody"></textarea></div>
+          <div><input type="text" placeholder="Tags" ng-model="tags"></input></div>
+          <button type="submit">Add</button>
+      </form>
+
+      <h1>There are {{dreams.length}} dreams</h1>
+        <div ng-repeat="dream in dreams | orderBy:'':true">
+          <div>{{"Author: " + dream.author}}</div>
+          <div>{{"Title: " + dream.title}}</div>
+          <div>{{dream.body}}</div>
+          <div>Tags[{{dream.tags}}]</div>
+          <br>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.js"></script>
+
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/controllers/dreams-controller.js"></script>
+
+  </body>
+</html>
