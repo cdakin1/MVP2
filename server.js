@@ -7,8 +7,7 @@ var express = require('express'),
     http = require('http');
 
 
-var uristring = process.env.MONGOLAB_URI ||
-    process.env.MONGOHQ_URL || 'mongodb://localhost:27017/mvp2');
+var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/mvp2';
 
 mongoose.connect(uristring, function (err, res) {
       if (err) {
